@@ -5,17 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Polaris</title>
 </head>
 
 <body>
 
-    <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li style="float:right"><a class="active" href="#about">About</a></li>
-    </ul>
+    <header class="cd-header">
+        <div class="header-wrapper">
+            <div class="logo-wrap">
+                <a href="#" class="hover-target"><span>Po</span>laris</a>
+            </div>
+            <div class="nav-but-wrap">
+                <div class="menu-icon hover-target">
+                    <span class="menu-icon__line menu-icon__line-left"></span>
+                    <span class="menu-icon__line"></span>
+                    <span class="menu-icon__line menu-icon__line-right"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav">
+        <div class="nav__content">
+            <ul class="nav__list">
+                <li class="nav__list-item active-nav"><a href="#" class="hover-target">home</a></li>
+                <li class="nav__list-item"><a href="#" class="hover-target">studio</a></li>
+                <li class="nav__list-item"><a href="#" class="hover-target">news</a></li>
+                <li class="nav__list-item"><a href="#" class="hover-target">contact</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="container">
         <img class="img-robot" src="PngItem_1082349.png" alt="" style="">
 
@@ -29,5 +50,37 @@
         </div>
     </div>
 </body>
+<script>
+
+    (function ($) {
+        "use strict";
+
+
+        //Navigation
+
+        var app = function () {
+            var body = undefined;
+            var menu = undefined;
+            var menuItems = undefined;
+            var init = function init() {
+                body = document.querySelector('body');
+                menu = document.querySelector('.menu-icon');
+                menuItems = document.querySelectorAll('.nav__list-item');
+                applyListeners();
+            };
+            var applyListeners = function applyListeners() {
+                menu.addEventListener('click', function () {
+                    return toggleClass(body, 'nav-active');
+                });
+            };
+            var toggleClass = function toggleClass(element, stringClass) {
+                if (element.classList.contains(stringClass)) element.classList.remove(stringClass); else element.classList.add(stringClass);
+            };
+            init();
+        }();
+
+
+
+    })(jQuery); </script>
 
 </html>
